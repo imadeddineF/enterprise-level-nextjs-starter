@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+import path from "path";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+	turbopack: {
+		root: path.join(__dirname, ".."),
+	},
 };
 
-export default nextConfig;
+const bundleAnalyzer = withBundleAnalyzer({
+	enabled: process.env.ANALYZE === "true",
+	openAnalyzer: true,
+});
+
+export default bundleAnalyzer(nextConfig);
