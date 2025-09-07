@@ -34,11 +34,11 @@ jobs:
 
             - name: Smoke & Acceptance tests
               run: |
-                  pnpm run build-storybook --quiet
-                  pnpm playwright install
-                  pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
-                    "pnpm dlx http-server storybook-static --port 6006 --silent" \
-                    "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm run test-storybook"
+                  bun run build-storybook --quiet
+                  bun playwright install
+                  bun dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+                    "bun dlx http-server storybook-static --port 6006 --silent" \
+                    "bun dlx wait-on tcp:127.0.0.1:6006 && bun run test-storybook"
 
             - name: Build app
               run: bun run build
