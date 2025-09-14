@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+// import { getSessionCookie } from "better-auth/cookies";
 import { rootDomain } from "@/lib/utils";
 
 function extractSubdomain(request: NextRequest): string | null {
@@ -41,8 +42,15 @@ function extractSubdomain(request: NextRequest): string | null {
 }
 
 export async function middleware(request: NextRequest) {
+	// better-auth
+	// const sessionCookie = getSessionCookie(request);
+
 	const { pathname } = request.nextUrl;
 	const subdomain = extractSubdomain(request);
+
+	// if (!sessionCookie) {
+	// 	return NextResponse.redirect(new URL("/", request.url));
+	// }
 
 	if (subdomain) {
 		// Block access to admin page from subdomains
@@ -70,6 +78,7 @@ export const config = {
 		 * 2. /_next (Next.js internals)
 		 * 3. all root files inside /public
 		 */
+		// "/dashboard",
 		"/((?!api|_next|[\\w-]+\\.\\w+).*)",
 	],
 };
