@@ -1,12 +1,10 @@
-import { OtpCodeForm } from "@/components/auth/otp-form";
+import { OtpCodeForm } from "@/app/(auth)/_components/otp-form";
 import React from "react";
 
 export default function OtpCodePage() {
 	return (
-		<div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
-			<div className="flex w-full max-w-sm flex-col gap-6">
-				<OtpCodeForm />
-			</div>
-		</div>
+		<>
+			<OtpCodeForm />
+		</>
 	);
 }
