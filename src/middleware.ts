@@ -92,7 +92,6 @@ export const config = {
 		 * 2. /_next (Next.js internals)
 		 * 3. all root files inside /public
 		 */
-		// "/dashboard",
-		"/((?!api|_next|[\\w-]+\\.\\w+).*)",
+		"/((?!api|trpc|_next|_vercel|[\\w-]+\\.\\w+).*)",
 	],
 };

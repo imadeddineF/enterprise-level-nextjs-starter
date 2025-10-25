@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import path from "path";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
 	turbopack: {
@@ -13,4 +16,4 @@ const bundleAnalyzer = withBundleAnalyzer({
 	openAnalyzer: true,
 });
 
-export default bundleAnalyzer(nextConfig);
+export default bundleAnalyzer(withNextIntl(nextConfig));
