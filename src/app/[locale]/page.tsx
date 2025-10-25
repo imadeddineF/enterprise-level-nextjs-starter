@@ -12,7 +12,7 @@ export default function LandingPage() {
 				<div className="container flex h-16 max-w-screen-xl items-center justify-between">
 					<div className="flex items-center space-x-2">
 						<span className="font-bold text-xl">
-							NextJS 15 --Starter--
+							NextJS 15 Starter
 						</span>
 					</div>
 					<nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
@@ -21,7 +21,7 @@ export default function LandingPage() {
 							target="_blank"
 						>
 							<Button variant="outline" size="sm">
-								<Github className="mr-2 h-4 w-4" />
+								<Github className="mr-1 h-4 w-4" />
 								GitHub
 							</Button>
 						</Link>

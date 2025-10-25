@@ -1,6 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
 // import { getSessionCookie } from "better-auth/cookies";
 import { rootDomain } from "@/lib/utils";
+import { routing } from "@/i18n/routing";
+import createMiddleware from "next-intl/middleware";
+
+const intlMiddleware = createMiddleware(routing);
 
 function extractSubdomain(request: NextRequest): string | null {
 	const url = request.url;
@@ -44,8 +48,18 @@ function extractSubdomain(request: NextRequest): string | null {
 export async function middleware(request: NextRequest) {
 	// better-auth
 	// const sessionCookie = getSessionCookie(request);
-
 	const { pathname } = request.nextUrl;
+
+	const response = intlMiddleware(request);
+
+	if (
+		pathname.startsWith("/api") ||
+		pathname.startsWith("/_next") ||
+		pathname.includes(".")
+	) {
+		return response;
+	}
+
 	const subdomain = extractSubdomain(request);
 
 	// if (!sessionCookie) {

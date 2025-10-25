@@ -1,4 +1,4 @@
-import { OtpCodeForm } from "@/app/(auth)/_components/otp-form";
+import { OtpCodeForm } from "@/app/[locale]/(auth)/_components/otp-form";
 import React from "react";
 
 export default function OtpCodePage() {
