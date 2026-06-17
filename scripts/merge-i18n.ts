@@ -61,10 +61,15 @@ const processDirectory = (directory: string): void => {
 					const filePath = join(absolute, `${locale}.json`); // Path to locale JSON file
 					if (existsSync(filePath)) {
 						// Read and parse the JSON file
+						const raw = readFileSync(filePath, "utf8").trim();
+						if (!raw) return;
 						const content = JSON.parse(
-							readFileSync(filePath, "utf8")
+							raw
 						) as Record<string, unknown>;
 						const keys = Object.keys(content); // Get top-level keys
+
+						// Skip empty files (no translations yet)
+						if (keys.length === 0) return;
 
 						// Ensure there's only one top-level key
 						if (keys.length !== 1) {

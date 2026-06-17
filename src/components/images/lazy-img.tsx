@@ -1,5 +1,5 @@
-import Image from "next/image";
+import Image, { type ImageProps } from "next/image";
 
-export const LazyImg = () => {
-	return <Image src={""} alt={""} />;
+export const LazyImg = ({ alt, ...props }: ImageProps) => {
+  return <Image loading="lazy" alt={alt} {...props} />;
 };
